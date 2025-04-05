@@ -1,0 +1,46 @@
+.recording-controls {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.recording-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recording-indicator {
+  color: red;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.recording-controls button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: white;
+}
+
+.start-recording-btn {
+  background-color: #5cb85c;
+}
+
+.stop-recording-btn {
+  background-color: #d9534f;
+}
