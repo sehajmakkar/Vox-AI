@@ -2,12 +2,15 @@ import Transcript from '../models/transcript.model.js';
 import Meeting from '../models/meeting.model.js';
 import transcriptionService from '../services/transcription.service.js';
 import path from 'path';
+import fs from 'fs';
 
 /**
  * Controller for handling transcript operations
  */
 export const transcribeAudio = async (req, res) => {
   try {
+    console.log('Received file:', req.file);
+    
     if (!req.file) {
       return res.status(400).json({ message: 'No audio file uploaded' });
     }
@@ -29,7 +32,18 @@ export const transcribeAudio = async (req, res) => {
       await newMeeting.save();
     }
 
-    const filePath = path.join(process.cwd(), req.file.path);
+    // Construct absolute file path
+    const filePath = path.join(process.cwd(), 'uploads', req.file.filename);
+    console.log('Attempting to access file at:', filePath);
+    console.log('File exists?', fs.existsSync(filePath));
+    
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Uploaded file not found',
+        path: filePath
+      });
+    }
     
     // Process the audio file and get transcription
     const transcriptionResult = await transcriptionService.transcribeAudio(filePath);

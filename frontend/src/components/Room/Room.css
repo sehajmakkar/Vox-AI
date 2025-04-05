@@ -1,8 +1,4 @@
 .recording-controls {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 8px;
@@ -43,4 +39,27 @@
 
 .stop-recording-btn {
   background-color: #d9534f;
+}
+
+.transcripts-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transcripts-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.transcripts-panel::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.transcripts-panel::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

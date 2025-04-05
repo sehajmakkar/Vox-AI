@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.config.js';
 import transcriptRoutes from './routes/transcript.routes.js';
 import meetingRoutes from './routes/meeting.routes.js';
+import fs from 'fs';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -26,8 +28,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
 // Make uploads directory accessible
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // Routes
 app.use('/api/transcripts', transcriptRoutes);
