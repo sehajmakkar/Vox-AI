@@ -5,6 +5,7 @@ import Room from './components/Room/Room'
 import Landing from './components/Landing/Landing'
 import Navbar from './components/Navbar'
 import Dashboard from "../src/components/Dashboard"  
+import MyMeetings from './components/MyMeetings'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Route path="/join" element={<HomePage />} />  
       <Route path="/room/:roomId" element={<Room />} />
       <Route path="/dashboard/:roomId" element={<Dashboard />} />
+      <Route path="/meetings" element={<MyMeetings />} />
     </Routes>
   )
 }

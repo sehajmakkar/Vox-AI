@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mic } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,14 +21,16 @@ const Navbar = () => {
     }`}>
       <div className="px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
-          <div className="h-9 w-9 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-            <Mic className="h-5 w-5 text-white" />
-          </div>
-          <span className="text-blue-600 font-bold text-xl">VOX AI</span>
+          <Link to="/" className="flex items-center">
+            <div className="h-9 w-9 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+              <Mic className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-blue-600 font-bold text-xl">VOX AI</span>
+          </Link>
         </div>
         <div className="hidden md:flex gap-8">
-          <a href="#" className="text-blue-800 hover:text-blue-600 transition-colors">Meetings</a>
-          <a href="#" className="text-blue-800 hover:text-blue-600 transition-colors">Contact</a>
+          <Link to="/meetings" className="text-blue-800 hover:text-blue-600 transition-colors">My Meetings</Link>
+          <Link to="/join" className="text-blue-800 hover:text-blue-600 transition-colors">Join Meeting</Link>
           <a href="#" className="text-blue-800 hover:text-blue-600 transition-colors">About</a>
         </div>
         <button className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-md">

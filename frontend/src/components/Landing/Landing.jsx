@@ -81,7 +81,7 @@ const VoxAiLandingPage = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </button>
-            <button onClick={() => navigate('/past-meetings')} className="bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 cursor-pointer py-3 px-8 rounded-full flex items-center justify-center transition-colors shadow-md">
+            <button onClick={() => navigate('/meetings')} className="bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 cursor-pointer py-3 px-8 rounded-full flex items-center justify-center transition-colors shadow-md">
               Past Meetings
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
