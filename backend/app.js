@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.config.js';
 import transcriptRoutes from './routes/transcript.routes.js';
 import meetingRoutes from './routes/meeting.routes.js';
+import geminiRoutes from './routes/gemini.routes.js';
 import fs from 'fs';
 
 import path from 'path';
@@ -28,8 +29,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
 // Make uploads directory accessible
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
@@ -39,6 +38,7 @@ if (!fs.existsSync(uploadsDir)) {
 // Routes
 app.use('/api/transcripts', transcriptRoutes);
 app.use('/api/meetings', meetingRoutes);
+app.use('/api/gemini', geminiRoutes);
 
 // Health check route
 app.get('/health', (req, res) => {

@@ -105,17 +105,27 @@ const Room = () => {
   };
 
   const handleExit = async () => {
-    if (isRecording) {
-      await stopRecording();
+    try {
+      if (isRecording) {
+        await stopRecording();
+      }
+      
+      // End the meeting
+      await endMeeting();
+      
+      // Make sure the zpRef is destroyed properly before navigation
+      if (zpRef.current) {
+        zpRef.current.destroy();
+        zpRef.current = null; // Clear the reference
+      }
+      
+      // Navigate after cleanup is complete
+      navigate(`/dashboard/${roomId}`);
+    } catch (error) {
+      console.error("Error during exit:", error);
+      // Still try to navigate even if there's an error
+      navigate(`/dashboard/${roomId}`);
     }
-    
-    // End the meeting
-    await endMeeting();
-    
-    if (zpRef.current) {
-      zpRef.current.destroy();
-    }
-    navigate("/");
   };
 
   // Start audio recording
