@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
+import AskAIButton from './AskAI';
 
 const Dashboard = () => {
   const { roomId } = useParams();
@@ -253,6 +254,7 @@ const Dashboard = () => {
               Export Report
             </button>
           )}
+          <AskAIButton />
         </div>
       </main>
     </div>
