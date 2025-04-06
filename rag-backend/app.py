@@ -22,7 +22,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or "AIzaSyAXzmHm2OTvvjtUmDyQNy-tgDl
 
 # Document Processing Class
 class DocumentProcessor:
-    def _init_(self, chunk_size: int = 1000, chunk_overlap: int = 200):
+    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200):
         """Initialize document processor with chunk settings"""
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
@@ -76,7 +76,7 @@ class DocumentProcessor:
 
 # RAG System Class
 class RAGSystem:
-    def _init_(self, api_key: str = "AIzaSyAXzmHm2OTvvjtUmDyQNy-tgDlslaxbOEo", 
+    def __init__(self, api_key: str = "AIzaSyAXzmHm2OTvvjtUmDyQNy-tgDlslaxbOEo", 
                  embedding_model: str = 'models/embedding-001', 
                  llm_model: str = 'gemini-1.5-pro'):
         """Initialize the RAG system with models and API key"""
