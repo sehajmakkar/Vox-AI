@@ -11,7 +11,13 @@ const VoxAiLandingPage = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const navigate = useNavigate();
   
-
+  // Sample user data with images
+  const users = [
+    { id: 1, name: "Alex Chen", image: "one.png" },
+    { id: 2, name: "Taylor Kim", image: "two.png" },
+    { id: 3, name: "Jordan Smith", image: "three.png" },
+    { id: 4, name: "Morgan Lee", image: "four.png" },
+  ];
   
   const headingTexts = [
     "Say Goodbye to What did we decide again?",
@@ -141,14 +147,29 @@ const VoxAiLandingPage = () => {
               
               {/* Meeting Content */}
               <div className="mt-4 flex flex-col h-[calc(100%-4rem)]">
-                {/* Participant Video Grid */}
+                {/* Participant Video Grid - UPDATED WITH IMAGES */}
                 <div className="grid grid-cols-2 gap-2 flex-grow">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="bg-gray-200 rounded-lg overflow-hidden relative flex items-center justify-center" 
-                         style={{animation: `pulse ${1 + i * 0.5}s infinite alternate ease-in-out`}}>
-                      <Users className="text-gray-400" size={24} />
-                      <div className="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded-md">
-                        User {i}
+                  {users.map((user) => (
+                    <div key={user.id} className="bg-gray-900 rounded-lg overflow-hidden relative flex items-center justify-center" 
+                         style={{animation: `pulse ${1 + user.id * 0.5}s infinite alternate ease-in-out`}}>
+                      {/* User Video Representation */}
+                      <div className="absolute inset-0 w-full h-full">
+                        <img 
+                          src={user.image} 
+                          alt={user.name} 
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Video Overlay - adds a slight blue tint and video-like effect */}
+                        <div className="absolute inset-0 bg-blue-900/10"></div>
+                      </div>
+                      
+                      {/* Microphone Indicator */}
+                      <div className="absolute top-2 right-2 bg-green-500 h-2 w-2 rounded-full animate-pulse"></div>
+                      
+                      {/* User Name Label */}
+                      <div className="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded-md flex items-center">
+                        <Mic size={12} className="mr-1" />
+                        {user.name}
                       </div>
                     </div>
                   ))}
